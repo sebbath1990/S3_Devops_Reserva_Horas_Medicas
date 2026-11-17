@@ -1,0 +1,108 @@
+<!-- Sebastián Castro Vilches | Asignatura: DEVPS1301-1-DEVOPS | IACC -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Reserva de Horas Médicas | Salud Integral</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <h1>Centro de Salud Integral</h1>
+      <p>Plataforma Web de Agendamiento Ambulatorio</p>
+    </div>
+  </header>
+
+  <main class="container grid-layout">
+    <section class="card">
+      <h2>Reserva de Hora Médica</h2>
+      <p class="subtitle">Complete los datos para simular la solicitud de atención ambulatoria.</p>
+
+      <form id="bookingForm">
+        <div class="form-group">
+          <label for="patientName">Nombre completo del paciente</label>
+          <input type="text" id="patientName" name="patientName" placeholder="Ej. María González" required />
+        </div>
+
+        <div class="form-group">
+          <label for="patientId">RUT o Documento de Identidad</label>
+          <input type="text" id="patientId" name="patientId" placeholder="Ej. 12.345.678-9" required />
+        </div>
+
+        <div class="form-group">
+          <label for="specialty">Especialidad médica</label>
+          <select id="specialty" name="specialty" required>
+            <option value="">Seleccione una especialidad...</option>
+            <option value="medicina-general">Medicina General</option>
+            <option value="cardiologia">Cardiología</option>
+            <option value="pediatria">Pediatría</option>
+            <option value="laboratorio">Toma de Muestras / Laboratorio</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Fecha preferente</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+          <div class="form-group">
+            <label for="timeBlock">Bloque horario</label>
+            <select id="timeBlock" name="timeBlock" required>
+              <option value="09:00">09:00 hrs</option>
+              <option value="10:30">10:30 hrs</option>
+              <option value="12:00">12:00 hrs</option>
+              <option value="15:30">15:30 hrs</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Confirmar Reserva Simulada</button>
+      </form>
+
+      <div id="confirmationBox" class="alert-success hidden" role="status"></div>
+    </section>
+
+    <aside class="sidebar">
+      <section class="card">
+        <h2>Estado del Servicio</h2>
+        <ul class="status-list">
+          <li><span class="badge badge-ok">OPERATIVO</span> Portal de Agendamiento Web</li>
+          <li><span class="badge badge-ok">NGINX ALPINE</span> Servidor Contenerizado</li>
+          <li><span class="badge badge-info">ENTORNO LOCAL</span> Puerto expuesto: 8080</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Información General de Atención</h2>
+        <p><strong>Horario presencial:</strong> Lunes a viernes de 08:00 a 19:00 hrs.</p>
+        <p><strong>Sábados:</strong> 08:30 a 13:30 hrs (solo exámenes).</p>
+        <p><strong>Aviso de privacidad:</strong> Este entorno corresponde a una simulación académica sin almacenamiento de datos clínicos reales.</p>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Sebastián Castro Vilches — DEVPS1301-1-DEVOPS — IACC</p>
+    </div>
+  </footer>
+
+  <script>
+    // Autor: Sebastián Castro Vilches | Asignatura: DEVPS1301-1-DEVOPS | Institución: IACC
+    document.getElementById('bookingForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const name = document.getElementById('patientName').value.trim();
+      const specialty = document.getElementById('specialty');
+      const specialtyText = specialty.options[specialty.selectedIndex].text;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('timeBlock').value;
+
+      const box = document.getElementById('confirmationBox');
+      box.textContent = `Solicitud registrada en simulación para ${name} en ${specialtyText} el día ${date} a las ${time} hrs.`;
+      box.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
