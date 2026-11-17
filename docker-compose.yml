@@ -1,0 +1,12 @@
+# Sebastián Castro Vilches | Asignatura: DEVPS1301-1-DEVOPS | IACC
+services:
+  web-reserva-medica:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: S3_Devops_salud_reserva_web
+    ports:
+      - "${HOST_PORT:-8080}:80"
+    env_file:
+      - .env.example
+    restart: unless-stopped
