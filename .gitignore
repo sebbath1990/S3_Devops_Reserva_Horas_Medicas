@@ -1,0 +1,11 @@
+# Sebastián Castro Vilches | Asignatura: DEVPS1301-1-DEVOPS | IACC
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
